@@ -1,0 +1,26 @@
+# Fix fixable issues, fail on the rest.
+pre-commit:
+  parallel: false
+  jobs:
+    - name: format-fix
+      glob: "*.{js,jsx,ts,tsx,mjs,cjs,json,md,astro,vue,svelte}"
+      run: pnpm exec oxfmt --write {staged_files}
+      stage_fixed: true
+
+    - name: lint-fix
+      glob: "*.{js,jsx,ts,tsx,mjs,cjs}"
+      run: pnpm exec oxlint {staged_files} --fix
+      stage_fixed: true
+
+    - name: format-check
+      glob: "*.{js,jsx,ts,tsx,mjs,cjs,json,md,astro,vue,svelte}"
+      run: pnpm exec oxfmt --check {staged_files}
+
+    - name: lint-check
+      glob: "*.{js,jsx,ts,tsx,mjs,cjs}"
+      run: pnpm exec oxlint {staged_files}
+
+pre-push:
+  jobs:
+    - name: typecheck
+      run: pnpm typecheck
