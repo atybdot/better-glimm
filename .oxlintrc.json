@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/crates/oxc_linter/src/snapshots/json_schema.json",
+  "plugins": ["import", "jsdoc", "react", "typescript", "unicorn", "vitest"],
+  "rules": {
+    "no-unused-vars": "off"
+  },
+  "overrides": [
+    {
+      "files": ["src/tanstack.tsx", "src/react.tsx"],
+      "rules": {
+        "react-hooks/exhaustive-deps": "off"
+      }
+    }
+  ]
+}

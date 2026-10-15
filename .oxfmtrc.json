@@ -1,0 +1,4 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/crates/oxc_formatter/src/config_schema.json",
+  "ignorePatterns": [".turbo/**", "**/dist/**", "**/.astro/**", "**/node_modules/**"]
+}
